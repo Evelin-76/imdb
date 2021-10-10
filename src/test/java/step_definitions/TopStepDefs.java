@@ -25,8 +25,9 @@ public class TopStepDefs {
 
     @When("the user clicks on the movie {int} in the Top Rated Movies")
     public void theUserClicksOnTheMovieNumberInTheTopRatedMovies(int selectMovieNumber) {
-
+        BrowserUtils.waitFor(3);
         topPage.getSelectedMovie(selectMovieNumber);
+        BrowserUtils.waitFor(1);
     }
 
     @And("the title is {string} and {int}")
