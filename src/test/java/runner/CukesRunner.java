@@ -7,7 +7,7 @@ import io.cucumber.junit.CucumberOptions;
                 "rerun:target/rerun.txt"
         },
         features = "src/test/resources/features",
-        glue = "src/test/java/step_definitions",
+        glue = "src/test/resources/features",
         dryRun = false,
         tags = "@wip"
 )
