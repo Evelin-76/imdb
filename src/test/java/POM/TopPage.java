@@ -22,7 +22,7 @@ public class TopPage extends BasePage{
 
     //Dynamic method getSelectedMovie from the top list
     public WebElement getSelectedMovie (int num){
-        String topStrSelection = topList + "["+num+"]";
+//        String topStrSelection = topList + "["+num+"]";
         WebElement topSelection = Driver.get().findElement(By.xpath("(//td[@class='titleColumn'])["+num+"]/a"));
         return topSelection;
     }
@@ -52,8 +52,6 @@ public class TopPage extends BasePage{
         return optionList;
     }
 
-
-
     @FindBy (xpath = "//li[@class='subnav_item_main']")
     private List<WebElement> listMoviesByGender;
 
@@ -66,17 +64,4 @@ public class TopPage extends BasePage{
        // selectedGender.click();
         return selectedGender;
     }
-
-//    public List<WebElement> getSortByOptions() {
-//        Select selectOptionSortingBy = new Select(sortByOptions);
-//        System.out.println(selectOptionSortingBy.getFirstSelectedOption().getText());
-//      //  System.out.println(selectOptionSortingBy.selectByVisibleText("Release Date"));
-//        System.out.println(selectOptionSortingBy.getAllSelectedOptions().size());
-//        System.out.println(selectOptionSortingBy.getAllSelectedOptions().get(2));
-//
-//        for (WebElement element : optionList) {
-//            element.click();
-//        }
-//        return optionList;
-//    }
 }
