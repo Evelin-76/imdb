@@ -9,21 +9,12 @@ import java.util.List;
 
 public class TopPage extends BasePage{
 
-
-
     @FindBy (xpath = "//td[@class='titleColumn']")
     private List<WebElement> topList;
 
     public List<WebElement> getTopList() {
         return topList;
     }
-
-//    //Dynamic method getTopListElement
-//    public WebElement getTopListElement(int num){
-//        String topStrElement = topList + "["+num+"]";
-//        WebElement topElement = Driver.get().findElement(By.xpath("(//td[@class='titleColumn'])["+num+"]"));
-//        return topElement;
-//    }
 
     //Dynamic method getSelectedMovie
     public WebElement getSelectedMovie (int num){
@@ -32,8 +23,6 @@ public class TopPage extends BasePage{
         return topSelection;
     }
 
-
-
     @FindBy (css = ".TitleHeader__TitleText-sc-1wu6n3d-0.dxSWFG")
     private WebElement movieTitle;
 
@@ -41,5 +30,4 @@ public class TopPage extends BasePage{
         String movieTitleText = movieTitle.getText();
         return movieTitleText;
     }
-
 }
