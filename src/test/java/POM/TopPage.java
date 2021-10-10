@@ -1,10 +1,14 @@
 package POM;
 
+import io.cucumber.java.eo.Se;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
+import utilities.BrowserUtils;
 import utilities.Driver;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TopPage extends BasePage{
@@ -16,7 +20,7 @@ public class TopPage extends BasePage{
         return topList;
     }
 
-    //Dynamic method getSelectedMovie
+    //Dynamic method getSelectedMovie from the top list
     public WebElement getSelectedMovie (int num){
         String topStrSelection = topList + "["+num+"]";
         WebElement topSelection = Driver.get().findElement(By.xpath("(//td[@class='titleColumn'])["+num+"]/a"));
@@ -30,4 +34,49 @@ public class TopPage extends BasePage{
         String movieTitleText = movieTitle.getText();
         return movieTitleText;
     }
+
+    @FindBy(id = "lister-sort-by-options" )
+    private static WebElement sortByOptions;
+
+    public static List<WebElement> sortBy(String option){
+
+        Select select = new Select(sortByOptions);
+        select.selectByVisibleText(option);
+  //      BrowserUtils.waitFor(1);
+        select.getAllSelectedOptions();
+
+        List<WebElement> optionList= new ArrayList<>();
+        for (WebElement element : optionList) {
+            element.click();
+        }
+        return optionList;
+    }
+
+
+
+    @FindBy (xpath = "//li[@class='subnav_item_main']")
+    private List<WebElement> listMoviesByGender;
+
+    public List<WebElement> getListMoviesByGender() {
+        return listMoviesByGender;
+    }
+    //Dynamic method getGender from the gender list
+    public WebElement getGender(int indexGender){
+        WebElement selectedGender = Driver.get().findElement(By.xpath("//li[@class='subnav_item_main'][" + indexGender + "]/a"));
+       // selectedGender.click();
+        return selectedGender;
+    }
+
+//    public List<WebElement> getSortByOptions() {
+//        Select selectOptionSortingBy = new Select(sortByOptions);
+//        System.out.println(selectOptionSortingBy.getFirstSelectedOption().getText());
+//      //  System.out.println(selectOptionSortingBy.selectByVisibleText("Release Date"));
+//        System.out.println(selectOptionSortingBy.getAllSelectedOptions().size());
+//        System.out.println(selectOptionSortingBy.getAllSelectedOptions().get(2));
+//
+//        for (WebElement element : optionList) {
+//            element.click();
+//        }
+//        return optionList;
+//    }
 }
